@@ -41,8 +41,7 @@ class BLEScanner {
     /* request connection to a BalenaBLE device */
     async request() {
         let options = {
-            filters: [
-            ],
+            acceptAllDevices: true,
             optionalServices: ['battery_service']
           }
     //   let options = {
