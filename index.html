@@ -3,7 +3,7 @@
   <meta charset="utf-8" />
   <title>scan for ble devices</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="ble-client.js"></script>
+  <!-- <script src="ble-client.js"></script> -->
   <script src="ble_scanner.js"></script>
   <body>
     <h1>scan for ble devices</h1>
@@ -178,12 +178,12 @@
 
   /* Disconnect from peripheral and update UI */
   function disconnect() {
-    BLEScanner.disconnect();
+    BLEScanr.disconnect();
     document.getElementById("not-connected").classList.remove("hidden");
     document.getElementById("container").classList.add("hidden");
   }
 
-  var BLEScanner = new BLEScanner();
+  var BLEScanr = new BLEScanner();
   var toggle = document.getElementById("toggle");
 
   /* connect to peripheral, load data and add event listeners */
@@ -191,7 +191,7 @@
     .getElementById("btn-connect")
     .addEventListener("click", async event => {
       try {
-        await BLEScanner.request();
+        await BLEScanr.request();
         // await balenaBLE.connect();
         // await balenaBLE.setLedCharacteristic();
         // await balenaBLE.setDeviceCharacteristic();
@@ -201,7 +201,7 @@
         // ).textContent = await balenaBLE.readCPUVendor();
         document.getElementById(
           "vendor"
-        ).textContent = BLEScanner.device
+        ).textContent = BLEScanr.device
         // document.getElementById(
         //   "speed"
         // ).textContent = await balenaBLE.readCPUSpeed();
