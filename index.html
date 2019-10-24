@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <meta charset="utf-8" />
-  <title>balenaBLE</title>
+  <title>scan for ble devices</title>
   <link rel="stylesheet" href="style.css" />
   <script src="ble-client.js"></script>
   <body>
-    <h1>balenaBLE</h1>
+    <h1>scan for ble devices</h1>
 
     <div class="lamp">
       <?xml version="1.0" encoding="iso-8859-1"?>
@@ -177,12 +177,12 @@
 
   /* Disconnect from peripheral and update UI */
   function disconnect() {
-    balenaBLE.disconnect();
+    BLEScanner.disconnect();
     document.getElementById("not-connected").classList.remove("hidden");
     document.getElementById("container").classList.add("hidden");
   }
 
-  var balenaBLE = new BalenaBLE();
+  var BLEScanner = new BLEScanner();
   var toggle = document.getElementById("toggle");
 
   /* connect to peripheral, load data and add event listeners */
@@ -190,33 +190,36 @@
     .getElementById("btn-connect")
     .addEventListener("click", async event => {
       try {
-        await balenaBLE.request();
-        await balenaBLE.connect();
-        await balenaBLE.setLedCharacteristic();
-        await balenaBLE.setDeviceCharacteristic();
+        await BLEScanner.request();
+        // await balenaBLE.connect();
+        // await balenaBLE.setLedCharacteristic();
+        // await balenaBLE.setDeviceCharacteristic();
         document.getElementById("not-connected").classList.add("hidden");
+        // document.getElementById(
+        //   "vendor"
+        // ).textContent = await balenaBLE.readCPUVendor();
         document.getElementById(
           "vendor"
-        ).textContent = await balenaBLE.readCPUVendor();
-        document.getElementById(
-          "speed"
-        ).textContent = await balenaBLE.readCPUSpeed();
+        ).textContent = BLEScanner.device
+        // document.getElementById(
+        //   "speed"
+        // ).textContent = await balenaBLE.readCPUSpeed();
 
-        toggle.addEventListener("change", e => {
-          if (e.target.checked) {
-            balenaBLE.writeLed(1);
-            toggle.disabled = true;
-            setTimeout(() => {
-              toggle.disabled = false;
-            }, 1000);
-          } else {
-            balenaBLE.writeLed(0);
-            toggle.disabled = true;
-            setTimeout(() => {
-              toggle.disabled = false;
-            }, 1000);
-          }
-        });
+        // toggle.addEventListener("change", e => {
+        //   if (e.target.checked) {
+        //     balenaBLE.writeLed(1);
+        //     toggle.disabled = true;
+        //     setTimeout(() => {
+        //       toggle.disabled = false;
+        //     }, 1000);
+        //   } else {
+        //     balenaBLE.writeLed(0);
+        //     toggle.disabled = true;
+        //     setTimeout(() => {
+        //       toggle.disabled = false;
+        //     }, 1000);
+        //   }
+        // });
 
         document.getElementById("container").classList.remove("hidden");
       } catch (error) {
