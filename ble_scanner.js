@@ -57,19 +57,19 @@ class BLEScanner {
       }
 
   
-    /* the Device characteristic providing CPU information */
-    async setDeviceCharacteristic() {
-      const service = await this.device.gatt.getPrimaryService(0xfff1);
-      const vendor = await service.getCharacteristic(
-        "d7e84cb2-ff37-4afc-9ed8-5577aeb84542"
-      );
-      this.cpuVendor = vendor;
+    // /* the Device characteristic providing CPU information */
+    // async setDeviceCharacteristic() {
+    //   const service = await this.device.gatt.getPrimaryService(0xfff1);
+    //   const vendor = await service.getCharacteristic(
+    //     "d7e84cb2-ff37-4afc-9ed8-5577aeb84542"
+    //   );
+    //   this.cpuVendor = vendor;
   
-      const speed = await service.getCharacteristic(
-        "d7e84cb2-ff37-4afc-9ed8-5577aeb84541"
-      );
-      this.cpuSpeed = speed;
-    }
+    //   const speed = await service.getCharacteristic(
+    //     "d7e84cb2-ff37-4afc-9ed8-5577aeb84541"
+    //   );
+    //   this.cpuSpeed = speed;
+    // }
   
     /* request connection to a BalenaBLE device */
     async request() {

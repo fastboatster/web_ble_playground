@@ -187,9 +187,7 @@
   var toggle = document.getElementById("toggle");
 
   /* connect to peripheral, load data and add event listeners */
-  document
-    .getElementById("btn-connect")
-    .addEventListener("click", async event => {
+  document.getElementById("btn-connect").addEventListener("click", async event => {
       try {
         await BLEScanr.request();
         console.log(BLEScanr);
