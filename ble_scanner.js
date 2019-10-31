@@ -55,8 +55,8 @@ class BLEScanner {
       if (navigator.bluetooth == undefined) {
         alert("Sorry, Your device does not support Web BLE!");
         return;
-      }
-    //   this.device = await navigator.bluetooth.requestDevice(options);
+      };
+      this.device = await navigator.bluetooth.requestDevice(options);
     //   this.device = await navigator.bluetooth.requestDevice(
     //     { filters: [{
     //                 services: [0x1234, 0x12345678, '99999999-0000-1000-8000-00805f9b34fb']
