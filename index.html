@@ -192,8 +192,9 @@
     .addEventListener("click", async event => {
       try {
         await BLEScanr.request();
-        // await balenaBLE.connect();
-        // await balenaBLE.setLedCharacteristic();
+        await BLEScanr.connect();
+        await BLEScanr.setReadCharacteristic();
+        await BLEScanr.setWriteCharacteristic();
         // await balenaBLE.setDeviceCharacteristic();
         document.getElementById("not-connected").classList.add("hidden");
         // document.getElementById(
@@ -201,10 +202,10 @@
         // ).textContent = await balenaBLE.readCPUVendor();
         document.getElementById(
           "vendor"
-        ).textContent = BLEScanr.device
-        // document.getElementById(
-        //   "speed"
-        // ).textContent = await balenaBLE.readCPUSpeed();
+        ).textContent = BLEScanr.device;
+
+        // let result = BLEScanr.writeELM("atz\n");
+        document.getElementById("speed").textContent = await BLEScanr.writeELM("atz\n");
 
         // toggle.addEventListener("change", e => {
         //   if (e.target.checked) {

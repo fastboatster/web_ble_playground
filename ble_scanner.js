@@ -2,6 +2,8 @@ class BLEScanner {
     constructor() {
       this.device = null;
       this.led = null;
+      this.writeChar = null;
+      this.readChar = null;
       this.cpuVendor = null;
       this.cpuSpeed = null;
       this.onDisconnected = this.onDisconnected.bind(this);
@@ -23,6 +25,35 @@ class BLEScanner {
         handleLedStatusChanged
       );
     }
+
+    async setReadCharacteristic() {
+        const service = await this.device.gatt.getPrimaryService(0xfff0);
+        const characteristic = await service.getCharacteristic(0xfff1);
+        // characteristic.startNotifications();
+        this.readChar = characteristic;
+    
+        await this.readChar.startNotifications();
+    
+        this.readChar.addEventListener(
+          "characteristicvaluechanged",
+          handleLedStatusChanged
+        );
+      }
+
+      async setWriteCharacteristic() {
+        const service = await this.device.gatt.getPrimaryService(0xfff0);
+        const characteristic = await service.getCharacteristic(0xfff2);
+        // characteristic.startNotifications();
+        this.writeChar = characteristic;
+    
+        await this.writeChar.startNotifications();
+    
+        this.writeChar.addEventListener(
+          "characteristicvaluechanged",
+          handleLedStatusChanged
+        );
+      }
+
   
     /* the Device characteristic providing CPU information */
     async setDeviceCharacteristic() {
@@ -100,6 +131,22 @@ class BLEScanner {
       await this.led.writeValue(Uint8Array.of(data));
       await this.readLed();
     }
+
+        /* change LED state */
+    async writeELM(data) {
+        await this.writeChar.writeValue(Uint8Array.of(data));
+        let result = await this.readELM();
+        console.log(result);
+        return decode(result);
+    }
+
+    /* read LED state */
+    async readELM() {
+        await this.readChar.readValue();
+    }
+
+
+
   
     /* disconnect from peripheral */
     disconnect() {
