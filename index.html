@@ -188,7 +188,7 @@
 
   /* connect to peripheral, load data and add event listeners */
   document.getElementById("btn-connect").addEventListener("click", async event => {
-      // try {
+      try {
         await BLEScanr.request();
         console.log(BLEScanr);
         await BLEScanr.connect();
@@ -226,8 +226,8 @@
         // });
 
         document.getElementById("container").classList.remove("hidden");
-      // } catch (error) {
-      //   console.log(error.message);
-      // }
+      } catch (error) {
+        console.log(error.message);
+      }
     });
 </script>

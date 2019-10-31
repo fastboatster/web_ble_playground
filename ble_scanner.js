@@ -99,7 +99,7 @@ class BLEScanner {
       if (!this.device) {
         throw "No device selected";
       }
-      console.log('Name: ' + device.name);
+      console.log('Name: ' + this.device.name);
       this.device.addEventListener("gattserverdisconnected", this.onDisconnected);
     }
   
