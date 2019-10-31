@@ -28,7 +28,7 @@ class BLEScanner {
 
     async setReadCharacteristic() {
         const service = await this.device.gatt.getPrimaryService(0xfff0);
-        const characteristic = await service.getCharacteristic(0xfff1);
+        const characteristic = await service.getCharacteristic(0xfff2);
         // characteristic.startNotifications();
         this.readChar = characteristic;
     
@@ -43,7 +43,7 @@ class BLEScanner {
       async setWriteCharacteristic() {
         const service = await this.device.gatt.getPrimaryService(0xfff0);
         console.log(service)
-        const characteristic = await service.getCharacteristic(0xfff2);
+        const characteristic = await service.getCharacteristic(0xfff1);
         console.log(characteristic)
         // characteristic.startNotifications();
         this.writeChar = characteristic;
