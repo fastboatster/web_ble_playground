@@ -192,9 +192,13 @@
     .addEventListener("click", async event => {
       try {
         await BLEScanr.request();
+        console.log(BLEScanr);
         await BLEScanr.connect();
+        console.log(BLEScanr);
         await BLEScanr.setReadCharacteristic();
+        console.log(BLEScanr);
         await BLEScanr.setWriteCharacteristic();
+        console.log(BLEScanr);
         // await balenaBLE.setDeviceCharacteristic();
         document.getElementById("not-connected").classList.add("hidden");
         // document.getElementById(
