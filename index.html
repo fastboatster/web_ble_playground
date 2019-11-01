@@ -198,7 +198,7 @@
         // console.log(BLEScanr);
         await BLEScanr.setWriteCharacteristic();
         console.log(BLEScanr);
-        await BLEScanr.writeELM("atz\n");
+        await BLEScanr.writeELM("atz\r");
         // await balenaBLE.setDeviceCharacteristic();
         document.getElementById("not-connected").classList.add("hidden");
         // document.getElementById(

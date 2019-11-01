@@ -140,7 +140,7 @@ class BLEScanner {
 
         /* change LED state */
     async writeELM(data) {
-        console.log("data" + data);
+        console.log("data " + data);
         await this.writeChar.writeValue(Uint8Array.of(data));
         console.log("wrote data");
         // let result = await this.readELM();
