@@ -77,7 +77,9 @@ class BLEScanner {
     async request() {
         let options = {
             acceptAllDevices: true,
-            optionalServices: [0xfff0, 0xfff1]
+            optionalServices: [0xfff0
+              // , 0xfff1
+            ]
           };
     //   let options = {
     //     filters: [
