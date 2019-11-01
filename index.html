@@ -153,7 +153,7 @@
 <script>
   /* updates UI when LED is turned on/off */
   function handleLedStatusChanged(event) {
-    console.log(event)
+    console.log(event.target.value)
     let status = event.target.value.getUint8(0);
     rays = document.getElementsByClassName("rays");
 
