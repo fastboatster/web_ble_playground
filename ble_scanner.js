@@ -33,7 +33,8 @@ class BLEScanner {
         this.readChar = characteristic;
     
         await this.readChar.startNotifications();
-    
+        console.log("read char");
+        console.log(this.readChar);
         this.readChar.addEventListener(
           "characteristicvaluechanged",
           handleLedStatusChanged
@@ -44,12 +45,13 @@ class BLEScanner {
         const service = await this.device.gatt.getPrimaryService(0xfff0);
         console.log(service)
         const characteristic = await service.getCharacteristic(0xfff2);
-        console.log(characteristic)
+        // console.log(characteristic)
         // characteristic.startNotifications();
         this.writeChar = characteristic;
     
         await this.writeChar.startNotifications();
-    
+        console.log("write char");
+        console.log(this.writeChar);
         this.writeChar.addEventListener(
           "characteristicvaluechanged",
           handleLedStatusChanged

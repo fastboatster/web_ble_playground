@@ -198,6 +198,7 @@
         // console.log(BLEScanr);
         await BLEScanr.setWriteCharacteristic();
         console.log(BLEScanr);
+        await BLEScanr.writeELM("atz\n");
         // await balenaBLE.setDeviceCharacteristic();
         document.getElementById("not-connected").classList.add("hidden");
         // document.getElementById(
@@ -208,7 +209,7 @@
         // ).textContent = BLEScanr.device;
 
         // let result = BLEScanr.writeELM("atz\n");
-        document.getElementById("speed").textContent = await BLEScanr.writeELM("atz\n");
+        // document.getElementById("speed").textContent = await BLEScanr.writeELM("atz\n");
 
         // toggle.addEventListener("change", e => {
         //   if (e.target.checked) {
