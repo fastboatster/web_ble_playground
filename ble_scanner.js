@@ -138,9 +138,9 @@ class BLEScanner {
     async writeELM(data) {
         console.log("data" + data);
         await this.writeChar.writeValue(Uint8Array.of(data));
-        let result = await this.readELM();
-        console.log(result);
-        return decode(result);
+        // let result = await this.readELM();
+        // console.log(result);
+        // return decode(result);
     }
 
     /* read LED state */

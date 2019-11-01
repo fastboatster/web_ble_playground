@@ -153,6 +153,7 @@
 <script>
   /* updates UI when LED is turned on/off */
   function handleLedStatusChanged(event) {
+    console.log(event)
     let status = event.target.value.getUint8(0);
     rays = document.getElementsByClassName("rays");
 
@@ -193,8 +194,8 @@
         console.log(BLEScanr);
         await BLEScanr.connect();
         console.log(BLEScanr);
-        await BLEScanr.setReadCharacteristic();
-        console.log(BLEScanr);
+        // await BLEScanr.setReadCharacteristic();
+        // console.log(BLEScanr);
         await BLEScanr.setWriteCharacteristic();
         console.log(BLEScanr);
         // await balenaBLE.setDeviceCharacteristic();
