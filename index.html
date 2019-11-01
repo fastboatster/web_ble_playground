@@ -173,7 +173,7 @@
 
   /* helper function to decode message sent from peripheral */
   function decode(buf) {
-    let dec = new TextDecoder("utf-8");
+    let dec = new TextDecoder("ascii");
     return dec.decode(buf);
   }
 
